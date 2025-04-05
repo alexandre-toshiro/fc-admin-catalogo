@@ -1,7 +1,10 @@
 package com.fullcycle.admin.catalogo.application;
 
-import com.fullcycle.admin.catalogo.domain.category.Category;
+public abstract class UseCase<IN, OUT> {
 
-public class UseCase {
-
+    public abstract OUT execute(IN anIn);
+    /*
+    pq execute? Por padrão os casos de uso implementam o pattern command, que possui um unico metodo
+    e a implementacoes serao CreateUseCase, FindAllUseCase, etc etc.
+     */
 }
