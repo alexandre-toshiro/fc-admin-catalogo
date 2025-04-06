@@ -11,11 +11,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
@@ -43,7 +43,7 @@ public class UpdateCategoryUseCaseTest {
         final var expectedIsActive = true;
         final var expectedId = aCategory.getId();
 
-        final var aComnmand = UpdateCategoryUseCaseTest.with(
+        final var aCommand = UpdateCategoryCommand.with(
                 expectedId.getValue(),
                 expectedName,
                 expectedDescription,
@@ -52,11 +52,15 @@ public class UpdateCategoryUseCaseTest {
 
         when(categoryGateway.findById(eq(expectedId)))
                 .thenReturn(Optional.of(aCategory));
+        //aqui estamos retornando a mesma categoria que foi criada e ela é um objeto mutavel
 
         when(categoryGateway.update(any()))
                 .thenAnswer(returnsFirstArg());
+        //Como esta retornando o mesmo objeto, na hora que passar no update ir mudar do updateAt
+        //Fazendo com que a linha "aCategory.getUpdatedAt().isBefore(aUpdatedCategory.getUpdatedAt())"
+        //Falhe, pois na verdade os horarios serao mesmo, ja que foi atualizado o valor do primeiro objeto retornado acima
 
-        final var actualOutput = useCase.execute(aComnmand).get();
+        final var actualOutput = useCase.execute(aCommand).get();
 
         Assertions.assertNotNull(actualOutput);
         Assertions.assertNotNull(actualOutput.id());
