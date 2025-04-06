@@ -5,7 +5,6 @@ import com.fullcycle.admin.catalogo.domain.category.CategoryGateway;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.AdditionalAnswers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -51,7 +50,7 @@ public class UpdateCategoryUseCaseTest {
         );
 
         when(categoryGateway.findById(eq(expectedId)))
-                .thenReturn(Optional.of(aCategory));
+                .thenReturn(Optional.of(Category.with(aCategory)));
         //aqui estamos retornando a mesma categoria que foi criada e ela é um objeto mutavel
 
         when(categoryGateway.update(any()))
