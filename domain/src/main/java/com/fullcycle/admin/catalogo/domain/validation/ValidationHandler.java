@@ -21,6 +21,14 @@ public interface ValidationHandler {
         return getErrors() != null && !getErrors().isEmpty();
     }
 
+    default Error firstError() {
+        if (getErrors() != null && !getErrors().isEmpty()) {
+            return getErrors().get(0);
+        } else {
+            return null;
+        }
+    }
+
     public interface Validation {
         //interface funcional para permitir o usoo de lambda no método validade
         void validate();
