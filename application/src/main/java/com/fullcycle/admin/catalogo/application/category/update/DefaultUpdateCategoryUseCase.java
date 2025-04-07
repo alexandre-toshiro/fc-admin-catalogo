@@ -50,6 +50,6 @@ public class DefaultUpdateCategoryUseCase extends UpdateCategoryUseCase {
     }
 
     private static Supplier<DomainException> notFound(final CategoryID andId) {
-        return () -> DomainException.with(new Error("Category with ID %s was not-found".formatted(andId.getValue())));
+        return () -> DomainException.with(new Error("Category with ID %s was not found".formatted(andId.getValue())));
     }
 }
