@@ -1,0 +1,2 @@
+DROP TABLE category;
+-- COMO UMA BOA PRÁTICA CRIAR OS SCRIPTS DE DESFAZER um script no flyway
