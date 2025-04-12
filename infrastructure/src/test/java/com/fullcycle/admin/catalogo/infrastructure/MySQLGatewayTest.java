@@ -36,6 +36,8 @@ public @interface MySQLGatewayTest {
                     SpringExtension.getApplicationContext(context)
                             .getBeansOfType(CrudRepository.class)
                             .values();
+
+            cleanUp(repositories);
         }
 
         private void cleanUp(final Collection<CrudRepository> repositories) {

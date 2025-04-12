@@ -78,9 +78,9 @@ public class CategoryMySQLGatewayTest {
         Assertions.assertEquals(1, categoryRepository.count());
 
         Assertions.assertEquals(aCategory.getId(), actualCategory.getId());
-        Assertions.assertEquals(expectedName, aCategory.getName());
-        Assertions.assertEquals(expectedDescription, aCategory.getDescription());
-        Assertions.assertEquals(expectedIsActive, aCategory.isActive());
+        Assertions.assertEquals(expectedName, actualCategory.getName());
+        Assertions.assertEquals(expectedDescription, actualCategory.getDescription());
+        Assertions.assertEquals(expectedIsActive, actualCategory.isActive());
         Assertions.assertEquals(aCategory.getCreatedAt(), actualCategory.getCreatedAt());
         Assertions.assertTrue(aCategory.getUpdatedAt().isBefore(actualCategory.getUpdatedAt()));
         Assertions.assertEquals(aCategory.getDeletedAt(), actualCategory.getDeletedAt());
@@ -89,11 +89,11 @@ public class CategoryMySQLGatewayTest {
         final var actualEntity = categoryRepository.findById(aCategory.getId().getValue()).get();
 
         Assertions.assertEquals(aCategory.getId().getValue(), actualEntity.getId());
-        Assertions.assertEquals(expectedName, aCategory.getName());
-        Assertions.assertEquals(expectedDescription, aCategory.getDescription());
-        Assertions.assertEquals(expectedIsActive, aCategory.isActive());
+        Assertions.assertEquals(expectedName, actualEntity.getName());
+        Assertions.assertEquals(expectedDescription, actualEntity.getDescription());
+        Assertions.assertEquals(expectedIsActive, actualEntity.isActive());
         Assertions.assertEquals(aCategory.getCreatedAt(), actualEntity.getCreatedAt());
-        Assertions.assertEquals(aCategory.getUpdatedAt(), actualEntity.getUpdatedAt());
+        Assertions.assertTrue(aCategory.getUpdatedAt().isBefore(actualCategory.getUpdatedAt()));
         Assertions.assertEquals(aCategory.getDeletedAt(), actualEntity.getDeletedAt());
         Assertions.assertNull(actualEntity.getDeletedAt());
 
