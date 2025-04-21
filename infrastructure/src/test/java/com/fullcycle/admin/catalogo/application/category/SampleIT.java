@@ -1,4 +1,4 @@
-package com.fullcycle.admin.catalogo.application;
+package com.fullcycle.admin.catalogo.application.category;
 
 import com.fullcycle.admin.catalogo.IntegrationTest;
 import com.fullcycle.admin.catalogo.application.category.create.CreateCategoryUseCase;
