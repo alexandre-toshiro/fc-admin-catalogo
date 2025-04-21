@@ -21,17 +21,4 @@ public class Main {
         System.setProperty(AbstractEnvironment.DEFAULT_PROFILES_PROPERTY_NAME, "development");
         SpringApplication.run(WebServerConfig.class, args);
     }
-
-    //tese para verificar se a injeção dos beans esta correta
-    @Bean
-    @DependsOnDatabaseInitialization
-    ApplicationRunner runner(@Autowired CreateCategoryUseCase createCategoryUseCase,
-                             @Autowired UpdateCategoryUseCase updateCategoryUseCase,
-                             @Autowired DeleteCategoryUseCase deleteCategoryUseCase,
-                             @Autowired ListCategoriesUseCase ListCategoriesUseCase,
-                             @Autowired GetCategoryByIdUseCase getCategoryByIdUseCase) {
-        return args -> {
-
-        };
-    }
 }
