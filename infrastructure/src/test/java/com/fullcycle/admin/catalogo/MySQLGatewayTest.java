@@ -19,7 +19,7 @@ import java.util.Collection;
 @ActiveProfiles("test")
 @DataJpaTest //Carrega apenas os repositorios @Repository, n enxerha o service....
 @ComponentScan(includeFilters = {
-        @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*[MySQLGateway]")
+        @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".[MySQLGateway]")
 })//para resolver, utilizamos esse macete para carregar as classes de gatewayy
 @ExtendWith(CleanUpExtension.class) //permite que execute de maneira automatica
 public @interface MySQLGatewayTest {
