@@ -50,7 +50,7 @@ public class GetCategoryByIdUseCaseIT {
         Assertions.assertEquals(expectedDescription, actualCategory.description());
         Assertions.assertEquals(expectedIsActive, actualCategory.isActive());
 
-        //nnecessário truncar, pois o jpa salva no banco com millisecond
+        //necessário truncar, pois o jpa salva no banco com millisecond
         Assertions.assertEquals(
                 aCategory.getCreatedAt().truncatedTo(ChronoUnit.MILLIS),
                 actualCategory.createdAt().truncatedTo(ChronoUnit.MILLIS)
