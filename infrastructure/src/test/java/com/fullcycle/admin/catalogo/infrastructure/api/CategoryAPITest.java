@@ -9,6 +9,7 @@ import com.fullcycle.admin.catalogo.application.category.retrieve.get.GetCategor
 import com.fullcycle.admin.catalogo.domain.category.Category;
 import com.fullcycle.admin.catalogo.domain.category.CategoryID;
 import com.fullcycle.admin.catalogo.domain.exceptions.DomainException;
+import com.fullcycle.admin.catalogo.domain.exceptions.NotFoundException;
 import com.fullcycle.admin.catalogo.domain.validation.Error;
 import com.fullcycle.admin.catalogo.domain.validation.handler.Notification;
 import com.fullcycle.admin.catalogo.infrastructure.category.models.CreateCategoryApiInput;
@@ -192,10 +193,10 @@ public class CategoryAPITest {
         final var expectedId = CategoryID.from("123");
 
         when(getCategoryByIdUseCase.execute(any()))
-                .thenThrow(DomainException.with(new Error(expectedErrorMessage)));
+                .thenThrow(NotFoundException.with(Category.class, expectedId));
 
         //when
-        final var request = MockMvcRequestBuilders.get("/categories/{id}", expectedId)
+        final var request = MockMvcRequestBuilders.get("/categories/{id}", expectedId.getValue())
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON);
 
