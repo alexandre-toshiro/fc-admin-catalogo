@@ -3,7 +3,6 @@ package com.fullcycle.admin.catalogo.application.category.update;
 import com.fullcycle.admin.catalogo.IntegrationTest;
 import com.fullcycle.admin.catalogo.domain.category.Category;
 import com.fullcycle.admin.catalogo.domain.category.CategoryGateway;
-import com.fullcycle.admin.catalogo.domain.category.CategoryID;
 import com.fullcycle.admin.catalogo.domain.exceptions.DomainException;
 import com.fullcycle.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
 import com.fullcycle.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
@@ -15,12 +14,10 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
-import java.util.Objects;
-import java.util.Optional;
 
-import static org.mockito.AdditionalAnswers.returnsFirstArg;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.times;
 
 @IntegrationTest
 public class UpdateCategoryUseCaseIT {

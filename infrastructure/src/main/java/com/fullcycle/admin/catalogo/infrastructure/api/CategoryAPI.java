@@ -51,8 +51,18 @@ public interface CategoryAPI {
             @ApiResponse(responseCode = "404", description = "Category not found"),
             @ApiResponse(responseCode = "500", description = "An internal server error was thrown")
     })
-    @ApiResponse(responseCode = "404", description = "Category not found")
     CategoryApiOutput getById(@PathVariable("id") final String id);
+
+    @PutMapping(value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "Get a category by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Category updated successfuly"),
+            @ApiResponse(responseCode = "404", description = "Category not found"),
+            @ApiResponse(responseCode = "500", description = "An internal server error was thrown")
+    })
+    ResponseEntity<?> updateById(@PathVariable("id") final String id, @RequestBody final CreateCategoryApiInput input);
 }
 
 /**
